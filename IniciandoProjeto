@@ -1,0 +1,75 @@
+npm create vite@latest
+	
+npm i styled-components
+
+npm i @types/styled-components -D
+
+	Criar globalStyles
+	criar themes
+	
+	types do styledcomponents criar a 
+	pasta @types 
+	arquivo styled.d.ts
+		import 'styled-components'
+		import { defaultTheme } from '../styles/themes'
+
+		type ThemeType = typeof defaultTheme
+
+		declare module 'styled-components' {
+		  export interface DefaultTheme extends ThemeType {}
+		}
+
+	
+npm i eslint -D
+npm i @rocketseat/eslint-config -D
+
+	arquivo eslintrc.json
+		{
+		  "extends": "@rocketseat/eslint-config/react",
+		  "rules": {
+		    "no-unused-vars": "off"
+		  }
+		}
+		
+para testar o codigo e corrigir : npx eslint src --ext .ts, .tsx --fix
+
+
+npm i react-router-dom
+
+	pasta routes
+	arquivo Routes.tsx
+		import { Routes, Route } from 'react-router-dom'
+		import { Home } from '../pages/Home'
+		import { Checkout } from '../pages/Checkout'
+		import { Success } from '../pages/Success'
+
+		export function Router() {
+		  return (
+		    <Routes>
+		      <Route path="/" element={<Home />} />
+		      <Route path="/checkout" element={<Checkout />} />
+		      <Route path="/success" element={<Success />} />
+		    </Routes>
+		  )
+		}
+		
+	arquivo App.tsx
+		import { BrowserRouter } from 'react-router-dom'
+
+		import { ThemeProvider } from 'styled-components'
+		import { defaultTheme } from './styles/themes'
+		import { GlobalStyle } from './styles/global'
+
+		import { Router } from './routes/Routes'
+
+		export function App() {
+		  return (
+		    <ThemeProvider theme={defaultTheme}>
+		      <GlobalStyle />
+		      <BrowserRouter>
+			<Router />
+		      </BrowserRouter>
+		    </ThemeProvider>
+		  )
+		}
+
