@@ -8,15 +8,13 @@ import { useAuthContext } from '../../../../context/AuthContext'
 export function PrivateLayout() {
   const { loggedUser } = useAuthContext()
 
-  return !loggedUser?.token ?
-    (<Navigate to="/" />)
-    :
-    (
-      <S.DefaultLayoutConatiner>
-        <Header />
-        <Outlet />
-        <Footer />
-      </S.DefaultLayoutConatiner>
-    )
+  return !loggedUser?.token ? (
+    <Navigate to="/" />
+  ) : (
+    <S.DefaultLayoutConatiner>
+      <Header />
+      <Outlet />
+      <Footer />
+    </S.DefaultLayoutConatiner>
+  )
 }
-

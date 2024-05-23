@@ -1,22 +1,19 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 import { useAuthContext } from '../../../context/AuthContext'
 import * as S from './styles'
 
 export function Login() {
-  const {authenticate} = useAuthContext();
+  const { authenticate } = useAuthContext()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
- async function handleLogin () {
-   console.log('ESTOU AQUIIIIIIIIIII')
+  async function handleLogin() {
+    console.log('ESTOU AQUIIIIIIIIIII')
     try {
       await authenticate('email', 'password')
 
       navigate('/home')
-    } catch (error) {
-      
-    }
-
+    } catch (error) {}
   }
   return (
     <S.Container>

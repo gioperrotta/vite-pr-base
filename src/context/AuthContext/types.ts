@@ -3,7 +3,7 @@ export interface IUser {
   token?: string
 }
 
-export interface IContext extends IUser{
+export interface IContext extends IUser {
   loggedUser: IUser
   authenticate: (email: string, password: string) => Promise<void>
   logout: () => void

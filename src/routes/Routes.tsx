@@ -10,14 +10,14 @@ import { About } from '../pages/private-routes/About'
 export function Router() {
   return (
     <Routes>
-          <Route path="/" element={<PublicLayout />}>
-            <Route  path="/" element={<Login />} />
-          </Route>
+      <Route path="/" element={<PublicLayout />}>
+        <Route path="/" element={<Login />} />
+      </Route>
 
-          <Route path="/" element={<PrivateLayout />}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-          </Route>
+      <Route path="/" element={<PrivateLayout />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Route>
     </Routes>
   )
 }

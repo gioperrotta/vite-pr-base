@@ -5,8 +5,7 @@ export const DefaultLayoutConatiner = styled.div`
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
- flex-direction: column;
+  flex-direction: column;
 
- justify-content: space-between;
-
+  justify-content: space-between;
 `

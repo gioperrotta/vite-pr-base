@@ -5,6 +5,7 @@ import { LoginRequest, setUserLocalStorage } from './util'
 export const AuthContext = createContext<IContext>({} as IContext)
 
 export const AuthProvider = ({ children }: IAuthProvider) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [loggedUser, setLoggedUser] = useState<any>()
 
   async function authenticate(email: string, password: string) {
@@ -12,7 +13,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 
     console.log('ESTOU AQUI authenticate response=>', response)
 
-    if (!!response) {
+    if (response) {
       const payload = { token: response?.token, email: response?.email }
       setLoggedUser(payload)
       setUserLocalStorage(payload)
@@ -30,9 +31,8 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
   }
 
   return (
-    <AuthContext.Provider value={{loggedUser, authenticate, logout }} >
+    <AuthContext.Provider value={{ loggedUser, authenticate, logout }}>
       {children}
-
     </AuthContext.Provider>
   )
 }
